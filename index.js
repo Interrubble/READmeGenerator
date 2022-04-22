@@ -4,8 +4,6 @@ function init() {
     const inquirer = require('inquirer');
     const fs = require('fs');
 
-    // TODO: Create a function to write README file
-
     const readme = ({ title, description, install, usage, contributions, tests, license, github, linkedin, email }) =>
         `
             # ${title}
@@ -44,7 +42,7 @@ function init() {
 
             ## License
 
-            ![License:${license}](https://img.shields.io/badge/License-${license.toUpperCase()}-green)
+            License: ${license}
 
             ## GitHub
 
@@ -93,7 +91,7 @@ function init() {
             {
                 type: "list",
                 message: "What license do you want/need for your repository?",
-                choices: ["MIT", "GNU General Public License 3.0"],
+                choices: ["MIT", "GPLv3"],
                 name: "license",
             },
             {
