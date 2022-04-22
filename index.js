@@ -6,55 +6,55 @@ function init() {
 
     const readme = ({ title, description, install, usage, contributions, tests, license, github, linkedin, email }) =>
         `
-            # ${title}
+# ${title}
 
-            ## Table of Contents:
+## Table of Contents:
 
-            1. Description
-            2. Installation
-            3. Usage
-            4. Contributons
-            5. Tests
-            6. License
-            7. GitHub
-            8. LinkedIn
-            9. Email
+1. Description
+2. Installation
+3. Usage
+4. Contributons
+5. Tests
+6. License
+7. GitHub
+8. LinkedIn
+9. Email
 
-            ## Description
+## Description
 
-            ${description}
+${description}.
 
-            ## Installation
+## Installation
 
-            ${install}
+Use the command "${install}" to install any necessary dependencies.
 
-            ## Usage
+## Usage
 
-            ${usage}
+${usage}.
 
-            ## Contributions
+## Contributions
 
-            ${contributions}
+${contributions}.
 
-            ## Tests
+## Tests
 
-            ${tests}
+Stay up to date on tests as needed. To run tests, please use "${tests}".
 
-            ## License
+## License
 
-            License: ${license}
+License: ${license}.
 
-            ## GitHub
+## GitHub
 
-            ${github}
+${github}
 
-            ## LinkedIn
+## LinkedIn
 
-            ${linkedin}
+${linkedin}
 
-            ## Email
+## Email
 
-            ${email}
+${email}
             `
     inquirer
         .prompt([
