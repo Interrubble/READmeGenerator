@@ -3,7 +3,61 @@ function init() {
     // TODO: Include packages needed for this application
     const inquirer = require('inquirer');
     const fs = require('fs');
-    const generate = require('./utils/generateMarkdown.js');
+
+    // TODO: Create a function to write README file
+
+    const readme = ({ title, description, install, usage, contributions, tests, license, github, linkedin, email }) =>
+        `
+            # ${title}
+
+            ## Table of Contents:
+
+            1. Description
+            2. Installation
+            3. Usage
+            4. Contributons
+            5. Tests
+            6. License
+            7. GitHub
+            8. LinkedIn
+            9. Email
+
+            ## Description
+
+            ${description}
+
+            ## Installation
+
+            ${install}
+
+            ## Usage
+
+            ${usage}
+
+            ## Contributions
+
+            ${contributions}
+
+            ## Tests
+
+            ${tests}
+
+            ## License
+
+            ![License:${license}](https://img.shields.io/badge/License-${license.toUpperCase()}-green)
+
+            ## GitHub
+
+            ${github}
+
+            ## LinkedIn
+
+            ${linkedin}
+
+            ## Email
+
+            ${email}
+            `
     inquirer
         .prompt([
             {
@@ -39,7 +93,7 @@ function init() {
             {
                 type: "list",
                 message: "What license do you want/need for your repository?",
-                choices: ["MIT", "GNU General Public License 2.0", "Apache License 2.0", "GNU General Public License 3.0"],
+                choices: ["MIT", "GNU General Public License 3.0"],
                 name: "license",
             },
             {
@@ -58,63 +112,10 @@ function init() {
             }
         ])
         .then((answers) => {
-            // TODO: Create a function to write README file
-            
-            const readme =
-            `
-            # ${answers.title}
-
-            ## Table of Contents:
-
-            1. Description
-            2. Installation
-            3. Usage
-            4. Contributons
-            5. Tests
-            6. License
-            7. GitHub
-            8. LinkedIn
-            9. Email
-
-            ## Description
-
-            ${answers.description}
-
-            ## Installation
-
-            ${answers.install}
-
-            ## Usage
-
-            ${answers.usage}
-
-            ## Contributions
-
-            ${answers.contributions}
-
-            ## Tests
-
-            ${answers.tests}
-
-            ## License
-
-            ${answers.license}
-
-            ## GitHub
-
-            ${answers.github}
-
-            ## LinkedIn
-
-            ${answers.linkedin}
-
-            ## Email
-
-            ${answers.email}
-            `
-            fs.writeFile(`README2.md`, (readme, null, 2), (err,data)=>{
-                err? console.log(err): console.log("Generating README");
-            }), generate(answers)
+            const readmePageContent = readme(answers);
+            fs.writeFile(`README2.md`, readmePageContent, (err) => {
+                err ? console.log(err) : console.log("Generating README");
+            }) 
         });
 };
 
